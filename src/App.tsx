@@ -3,6 +3,7 @@ import {
   ArrowRight, Mail, MapPin, Sparkles, Bot, Workflow, Phone, MessageSquare,
   LayoutDashboard, Plug, Database, Server, Github, Linkedin, Twitter,
   Send, ExternalLink, Check, ChevronDown, Menu, X,
+  Plane, ShoppingBag, ShieldCheck, Users,
 } from "lucide-react";
 import headshot from "@/assets/mikey-headshot.png";
 import { ThemeToggle } from "@/components/portfolio/ThemeToggle";
@@ -25,6 +26,10 @@ const SERVICES = [
   { icon: Plug, title: "API Integration & Backend", desc: "Payment gateways, CRMs, OpenAI APIs, databases, and secure auth systems.", outcome: "Reliable, scalable backends." },
   { icon: Database, title: "Database Design & Optimization", desc: "PostgreSQL, SQL tuning, migrations, and schema architecture that scales.", outcome: "Queries that fly." },
   { icon: Server, title: "AI Infrastructure & DevOps", desc: "Docker, Kubernetes, CI/CD, VPS deployment, and production monitoring.", outcome: "Deploy with confidence." },
+  { icon: Plane, title: "Travel & GDS API Integration", desc: "Amadeus, Sabre, Travelport and HotelBeds search, booking and authentication integrations, plus debugging of 401 and token errors.", outcome: "A working travel API connection." },
+  { icon: ShoppingBag, title: "E-commerce & Klaviyo", desc: "Shopify fixes, Klaviyo flows (welcome, abandoned cart, browse abandonment) and discount campaigns.", outcome: "Better journeys from first visit to repeat purchase." },
+  { icon: ShieldCheck, title: "Meta App Review & WhatsApp Approval", desc: "Get unstuck on Meta App Review and WhatsApp Business API approval so your launch isn't blocked.", outcome: "A clear path to approval." },
+  { icon: Users, title: "CRM Integration", desc: "GoHighLevel and other CRM workflows connected to your forms, calls and messaging.", outcome: "Leads that don't fall through." },
 ];
 
 const PROCESS = [
@@ -37,25 +42,33 @@ const PROCESS = [
   { n: "07", t: "Support", d: "Monitor, optimize, and extend as needed." },
 ];
 
-const PROJECTS = [
+const PROJECTS: { title: string; stack: string[]; desc: string; link?: string; status?: string }[] = [
   { title: "AI WhatsApp Customer Support Platform", stack: ["WhatsApp Business API", "n8n", "OpenAI", "PostgreSQL"], desc: "End-to-end AI support system handling thousands of conversations with human handoff." },
   { title: "AI Voice Receptionist", stack: ["Retell AI", "Telnyx", "OpenAI", "n8n"], desc: "Voice agent that answers calls, books appointments, and qualifies leads 24/7." },
   { title: "Business Workflow Automation", stack: ["n8n", "HubSpot", "Apify", "Airtable"], desc: "Multi-system automation replacing 30+ hours/week of manual data entry." },
   { title: "PostgreSQL Optimization", stack: ["PostgreSQL", "SQL", "Indexing"], desc: "Reduced query times by 20x through schema redesign and strategic indexing." },
   { title: "OpenClaw Multi-Agent Setup", stack: ["OpenClaw", "Claude Code", "Hermes Agent", "Docker"], desc: "Production multi-agent orchestration for autonomous coding workflows." },
-  { title: "MT5-Copier", stack: ["Open Source", "MT5", "Trade Sync"], desc: "Open-source MT5 trade copier tool.", link: "https://github.com/Mikeyaruto/MT5-Copier" },
+  { title: "MT5-Copier", stack: ["Open Source", "MT5", "Trade Sync"], desc: "Open-source MT5 trade copier tool.", link: "https://github.com/Mikeyaruto/MT5-Copier", status: "Open source" },
+  { title: "Restaurant WhatsApp Automation", status: "Delivered", stack: ["Hetzner", "Docker", "Coolify", "PostgreSQL", "MinIO", "Typebot", "Evolution API", "Traefik"], desc: "Production WhatsApp automation for a restaurant, self-hosted on a Hetzner server with SSL and file storage." },
+  { title: "UGC Video Factory", status: "Delivered", stack: ["OpenClaw", "Kling AI", "Runware", "ffmpeg", "Telegram"], desc: "Automated pipeline that generates short clips, stitches three 10-second clips into a 30-second video and delivers it over Telegram." },
+  { title: "Shopify Design-File Verification", status: "Delivered", stack: ["n8n", "Shopify", "Google Drive API", "Google Sheets"], desc: "n8n workflow that verifies print-on-demand design files, using a direct Drive v3 API call where the native node fell short." },
+  { title: "Klaviyo Flows & 25% Off Campaign", status: "Client work", stack: ["Klaviyo", "Shopify", "Email copywriting"], desc: "Rewrote the Welcome Series, Abandoned Cart and Browse Abandonment flows and built a 25% off campaign for a Shopify store." },
+  { title: "Tracy Health Intelligence Platform", status: "Hackathon team build", stack: ["React", "Python ML", "Microservices", "Vercel"], desc: "Outbreak analytics with a React dashboard, ML service, API gateway and SMS alerts, built at the HealthTrace Hackathon 2026.", link: "https://healthtrace-platform.vercel.app" },
+  { title: "GDS & Travel API Integrations", status: "Specialism", stack: ["Amadeus", "Sabre", "Travelport", "HotelBeds"], desc: "Search, booking and authentication integrations, and root-cause debugging of 401 and token errors." },
 ];
 
 const STACK: Record<string, string[]> = {
   "AI & LLMs": ["OpenAI", "Claude", "Google Gemini", "Anthropic API", "RAG", "MCP"],
   "Automation": ["n8n", "Make.com", "Zapier"],
   "AI Voice": ["Retell AI", "Vapi AI", "Telnyx", "Twilio"],
-  "Messaging": ["WhatsApp Business API", "WATI", "Gupshup", "Zoko", "360dialog"],
+  "Messaging": ["WhatsApp Business API", "Evolution API", "Typebot", "WATI", "Gupshup", "Zoko", "360dialog"],
+  "E-commerce": ["Shopify", "Klaviyo"],
+  "Travel & GDS": ["Amadeus", "Sabre", "Travelport", "HotelBeds"],
   "Backend": ["Node.js", "Python", "FastAPI", "Express.js", "REST", "GraphQL"],
   "Frontend": ["React", "Next.js", "Astro", "TypeScript"],
   "Databases": ["PostgreSQL", "Supabase", "MySQL", "MongoDB", "SQLite"],
-  "DevOps": ["Docker", "Kubernetes", "GitHub Actions", "AWS", "DigitalOcean", "VPS"],
-  "Integrations": ["HubSpot", "Airtable", "Stripe", "Paystack", "Flutterwave", "Apify"],
+  "DevOps": ["Docker", "Kubernetes", "Coolify", "GitHub Actions", "AWS", "DigitalOcean", "Hetzner", "Hostinger", "VPS"],
+  "Integrations": ["HubSpot", "GoHighLevel", "Airtable", "Google Drive API", "Stripe", "Paystack", "Flutterwave", "Apify"],
   "AI Dev Platforms": ["Cursor", "Lovable", "Bolt.new", "Replit", "OpenClaw", "Claude Code"],
 };
 
@@ -278,7 +291,10 @@ function Portfolio_() {
             <Reveal key={p.title} delay={i * 60}>
               <article className="group flex h-full flex-col rounded-2xl border border-border bg-card p-7 shadow-soft transition hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow">
                 <div className="flex items-start justify-between gap-4">
-                  <h3 className="text-lg font-semibold">{p.title}</h3>
+                  <div>
+                    {p.status && <span className="mb-2 inline-block rounded-full border border-primary/40 px-2.5 py-0.5 text-xs font-medium text-primary">{p.status}</span>}
+                    <h3 className="text-lg font-semibold">{p.title}</h3>
+                  </div>
                   {p.link && (
                     <a href={p.link} target="_blank" rel="noreferrer" className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-border transition group-hover:border-primary group-hover:text-primary">
                       <ExternalLink className="h-4 w-4" />
