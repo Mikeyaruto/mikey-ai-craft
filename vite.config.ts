@@ -6,7 +6,7 @@ import path from "path";
 // GitHub Pages serves project sites from /<repo-name>/, so the base path
 // must match the repository name exactly (mikey-ai-craft).
 export default defineConfig({
-  base: "/mikey-ai-craft/",
+  base: process.env.VERCEL ? "/" : "/mikey-ai-craft/",
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
